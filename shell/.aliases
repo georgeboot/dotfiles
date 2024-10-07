@@ -1,42 +1,19 @@
 # PHP
-alias master="git checkout master && git pull"
-alias phpunit="vendor/bin/phpunit"
-alias phpunitw="phpunit-watcher watch"
 alias art="php artisan"
-alias c="composer"
-alias cu="composer update"
-alias cr="composer require"
-alias ci="composer install"
-alias cda="composer dump-autoload -o"
-alias hostfile="sudo vi /etc/hosts"
-alias deploy='envoy run deploy'
-alias deploy-code='envoy run deploy-code'
 alias mfs='php artisan migrate:fresh --seed'
 alias nah='git reset --hard;git clean -df'
-alias p="phpunit"
-alias pp="php artisan test --parallel"
-alias pf="phpunit --filter "
-alias d="php artisan dusk"
-alias sshconfig="vi ~/.ssh/config"
-alias copykey='command cat ~/.ssh/id_rsa.public | pbcopy'
-alias sail='./vendor/bin/sail'
-alias fix="[ -f vendor/bin/php-cs-fixer ] && vendor/bin/php-cs-fixer fix || php-cs-fixer fix"
+
+alias fix="[[ -f vendor/bin/pint ]] && vendor/bin/pint || { [[ -f vendor/bin/php-cs-fixer ]] && vendor/bin/php-cs-fixer fix || php-cs-fixer fix }"
 alias analyse="vendor/bin/phpstan analyse"
 alias pest="vendor/bin/pest"
 alias ..="cd .."
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # Random
 alias uuid="uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy && pbpaste && echo"
 
-
-# JavaScript
-alias jest="./node_modules/.bin/jest"
-
-# Git
-alias gc="git checkout"
-alias gpo="git push origin"
-alias gm="git merge"
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# New career
+alias part="kubectl run artisan-$(uuidgen | tr 'A-Z' 'a-z') -i --tty --rm --overrides='{\"spec\":{\"containers\":[{\"name\":\"georizon\",\"image\":\"ghcr.io/360-geo/georizon:latest\",\"envFrom\":[{\"configMapRef\":{\"name\":\"georizon-env\"}},{\"secretRef\":{\"name\":\"georizon-secrets\"}}]}],\"serviceAccount\":\"georizon\"}}' --image-pull-policy=Always -- php artisan"
 
 # Fast open
 alias o="open ."
@@ -49,14 +26,11 @@ alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && kill
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # IP addresses
-alias ip="curl https://diagnostic.opendns.com/myip ; echo"
+alias ip="curl https://ipinfo.io/ip ; echo"
 alias localip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Flush Directory Service cache
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-
-# Lock the screen
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
@@ -64,9 +38,3 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
-# Scape webpage
-alias scrape="scrapeUrl"
-
-# Restart touch bar
-alias touchbar="killall ControlStrip"

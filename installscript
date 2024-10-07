@@ -30,31 +30,7 @@ xattr -cr ~/Library/QuickLook/QLStephen.qlgenerator
 qlmanage -r
 qlmanage -r cache
 
-echo 'Install imagick'
-echo '---------------'
-pecl install imagick
-
-echo 'Install pcov'
-echo '--------------'
-pecl install pcov
-
-echo 'Install redis'
-echo '-------------'
-pecl install redis
-
-echo 'Install laravel valet'
-echo '---------------------'
-composer global require laravel/valet
-valet install
-mkdir -p "${HOME}/Sites"
-valet park "${HOME}/Sites"
-
-echo 'Install other php tools'
-echo '---------------------'
-composer global require laravel/installer beyondcode/expose
-
-echo 'Restoring mackup'
-mackup restore
+rustup completions zsh > ~/.zfunc/_rustup
 
 echo 'Setting macos defaults'
 $HOME/.dotfiles/macos/set-defaults.sh
